@@ -101,7 +101,7 @@
 		</p>
 
 		<p>
-			This web story was built on Web technology: HTML/CSS/JS, Vega-Lite, OpenLayers, and Snowpack.
+			This web story was built on Web technology: HTML/CSS/JS, Vega-Lite, OpenLayers, and SvelteKit.
 			Data processing was done with Python, namely the geopandas package.
 		</p>
 

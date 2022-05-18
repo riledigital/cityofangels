@@ -37,7 +37,7 @@
 		overflow: hidden;
 		z-index: 10;
 		padding: 1rem;
-		font-size: 0.65rem;
+		font-size: 0.8rem;
 	}
 	@media screen and (min-width: 900px) {
 		.map-legend {

@@ -30,6 +30,7 @@
 		font-size: var(--font-h3);
 		line-height: 1.2;
 		max-width: 30ch;
+		margin-bottom: 1rem;
 	}
 
 	h2,

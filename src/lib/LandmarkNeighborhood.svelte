@@ -122,6 +122,7 @@
 		font-size: var(--font-h2);
 		margin: 0;
 		padding: 0;
+		margin-bottom: 1rem;
 	}
 
 	:global(.vega-embed, .vis-container) {

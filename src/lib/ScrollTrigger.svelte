@@ -4,7 +4,7 @@
 	export let zoom: number;
 </script>
 
-<div
+<span
 	class="scroll-trigger"
 	id={`#trigger-${areaId}`}
 	data-coords={JSON.stringify(coords)}

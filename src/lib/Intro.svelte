@@ -21,7 +21,7 @@
 			and Ri Le
 		</p>
 	</div>
-	z
+
 	<div id="introduction" class="intro-container">
 		<p class="lead">Welcome to Los Angeles!</p>
 
@@ -149,6 +149,11 @@
 		grid-gap: 1rem;
 	}
 
+	caption {
+		display: block;
+		width: 100%;
+	}
+
 	.instructions {
 		background: rgba(255, 255, 255, 1);
 		background: linear-gradient(
@@ -174,7 +179,20 @@
 		width: 100%;
 	}
 
-	@media screen and (min-width: 600px) {
+	@media screen and (min-width: 700px) {
+		.title-card {
+			max-width: 1900px;
+			margin: auto;
+			padding: 8rem;
+		}
+		.title-card__title {
+			font-size: 8rem;
+		}
+
+		.byline {
+			font-size: 3rem;
+		}
+
 		.story-title {
 			font-size: 4rem;
 			line-height: 1.15;

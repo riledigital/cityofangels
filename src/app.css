@@ -5,24 +5,20 @@
 	--font-headings-serif: 'Argesta Display', serif;
 	--line-height-base: 1.45;
 
-	--font-size-base: 16px;
+	--font-size-base: 22px;
 	--font-h1: 2rem;
 	--font-h2: 1.4rem;
 	--font-h3: 1.25rem;
 	--font-h4: 1rem;
-}
 
-:root {
 	--c-blue: blue;
 	--c-pink: pink;
 	--c-red: rgb(150, 0, 0);
 	--c-white: #ffffff;
-}
-:root {
+
 	--c-background: white;
 	--c-text: black;
-}
-:root {
+
 	--margin-mobile: 1rem;
 	--margin: 6rem;
 	--margin-landmarks: 3rem;
@@ -128,4 +124,8 @@ a:hover {
 .responsive-image {
 	height: auto;
 	width: 100%;
+}
+
+.container {
+	margin: var(--margin);
 }

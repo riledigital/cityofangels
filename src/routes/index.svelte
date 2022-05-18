@@ -70,7 +70,16 @@
 
 <svelte:head>
 	<title>Homelessness in the City of Angels: A Data Story</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="title" content="Homelessness in the City of Angels: A Data Story" />
+	<meta name="description" content="Mapping homelessness in Los Angeles tourist destinations." />
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://cityofangels.netlify.app" />
+	<meta property="og:title" content="Homelessness in the City of Angels: A Data Story" />
+	<meta
+		property="og:description"
+		content="Mapping homelessness in Los Angeles tourist destinations."
+	/>
 </svelte:head>
 
 <div>
