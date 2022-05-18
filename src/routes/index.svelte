@@ -15,51 +15,53 @@
 
 	import { fromLonLat } from 'ol/proj.js';
 
-	function flyMapTo(map, coords, zoom = 14) {
-		// Fly map shorthand function
-		const view = map.getView();
-		view.animate({
-			center: fromLonLat(coords),
-			duration: 2500,
-			zoom: zoom ?? 14
-		});
-	}
-
-	const intersectCallback = throttle(({ coordinates, zoom }) => {
-		flyMapTo($mapElement, coordinates, zoom);
-	}, 500);
-
-	function createObserver(node: Element) {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				for (let entry of entries) {
-					if (entry.isIntersecting) {
-						const { target } = entry;
-						// run callback
-						const areaId = target.getAttribute('data-area-id');
-						const coordinates = JSON.parse(target.getAttribute('data-coords'));
-						const zoom = target.getAttribute('data-zoom');
-
-						try {
-							intersectCallback({ coordinates, zoom });
-							// value.flyMapTo(areaId, coordinates, zoom);
-						} catch (e) {
-							console.error(e);
-						}
-					}
-				}
-			},
-			{
-				rootMargin: '0px',
-				threshold: 0.2
-			}
-		);
-		// subscribe node to observer
-		observer.observe(node);
-	}
 	onMount(async () => {
 		// const waypoints = ['#ktown', '#hollywood', '#venice']
 
+		function flyMapTo(map, coords, zoom = 14) {
+			// Fly map shorthand function
+			const view = map.getView();
+			view.animate({
+				center: fromLonLat(coords),
+				duration: 2500,
+				zoom: zoom ?? 14
+			});
+		}
+
+		const intersectCallback = throttle(({ coordinates, zoom }) => {
+			if ($mapElement) {
+				flyMapTo($mapElement, coordinates, zoom);
+			}
+		}, 500);
+
+		function createObserver(node: Element) {
+			const observer = new IntersectionObserver(
+				(entries) => {
+					for (let entry of entries) {
+						if (entry.isIntersecting) {
+							const { target } = entry;
+							// run callback
+							const areaId = target.getAttribute('data-area-id');
+							const coordinates = JSON.parse(target.getAttribute('data-coords'));
+							const zoom = target.getAttribute('data-zoom');
+
+							try {
+								intersectCallback({ coordinates, zoom });
+								// value.flyMapTo(areaId, coordinates, zoom);
+							} catch (e) {
+								console.error(e);
+							}
+						}
+					}
+				},
+				{
+					rootMargin: '0px',
+					threshold: 0.2
+				}
+			);
+			// subscribe node to observer
+			observer.observe(node);
+		}
 		document.querySelectorAll(`.scroll-trigger`).forEach((node) => {
 			createObserver(node);
 		});
