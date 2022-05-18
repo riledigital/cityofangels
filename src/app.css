@@ -1,0 +1,131 @@
+:root {
+	--font-body: 'Argesta Text', serif;
+	--font-data: 'Silka', sans-serif;
+	--font-headings: var(--font-data);
+	--font-headings-serif: 'Argesta Display', serif;
+	--line-height-base: 1.45;
+
+	--font-size-base: 16px;
+	--font-h1: 2rem;
+	--font-h2: 1.4rem;
+	--font-h3: 1.25rem;
+	--font-h4: 1rem;
+}
+
+:root {
+	--c-blue: blue;
+	--c-pink: pink;
+	--c-red: rgb(150, 0, 0);
+	--c-white: #ffffff;
+}
+:root {
+	--c-background: white;
+	--c-text: black;
+}
+:root {
+	--margin-mobile: 1rem;
+	--margin: 6rem;
+	--margin-landmarks: 3rem;
+}
+
+@font-face {
+	font-family: 'Argesta Text';
+	src: url('/fonts/subset-ArgestaText-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Argesta Display';
+	src: url('/fonts/subset-ArgestaDisplay-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Argesta Text';
+	src: url('/fonts/subset-ArgestaText-RegularItalic.woff2') format('woff2');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Silka';
+	src: url('/fonts/subset-Silka-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Silka';
+	src: url('/fonts/subset-Silka-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	color: var(--c-text);
+	font-family: var(--font-body);
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-base);
+	font-kerning: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-family: var(--font-headings);
+	margin-top: 0;
+	margin-bottom: var(--margin-mobile);
+}
+
+p {
+	margin-bottom: 2rem;
+	max-width: 50ch;
+}
+
+.ol-attribution {
+	font-size: 0.8rem;
+}
+
+a {
+	font-weight: 700;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: 2px dashed;
+}
+
+.vega-embed {
+	display: flex;
+	height: auto;
+	width: 100%;
+}
+
+#vg-tooltip-element {
+	font-family: 'Silka';
+	font-size: 1rem;
+	padding: 1rem;
+}
+
+.hidden {
+	opacity: 0;
+}
+
+.responsive-image {
+	height: auto;
+	width: 100%;
+}
