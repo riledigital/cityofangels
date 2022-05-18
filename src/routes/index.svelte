@@ -10,39 +10,38 @@
 	import Appendix from '../lib/Appendix.svelte';
 	import MapLegend from '../lib/map/MapLegend.svelte';
 	import { mapElement } from '../lib/store';
-	import { throttle } from 'lodash';
+	import { throttle } from 'lodash-es';
 	import { onMount } from 'svelte';
-	import { fromLonLat } from 'ol/proj';
 
-	function flyMapTo(map, areaId, coords, zoom = 14) {
+	import { fromLonLat } from 'ol/proj.js';
+
+	function flyMapTo(map, coords, zoom = 14) {
 		// Fly map shorthand function
-		// let coords = COORDS[areaId];
 		const view = map.getView();
 		view.animate({
 			center: fromLonLat(coords),
 			duration: 2500,
 			zoom: zoom ?? 14
 		});
-		debugger;
 	}
-	let intersectCallback = throttle(({ areaId, coordinates, zoom }) => {
-		flyMapTo($mapElement, areaId, coordinates, zoom);
-	});
 
-	function createObserver(node) {
+	const intersectCallback = throttle(({ coordinates, zoom }) => {
+		flyMapTo($mapElement, coordinates, zoom);
+	}, 500);
+
+	function createObserver(node: Element) {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				for (let entry of entries) {
 					if (entry.isIntersecting) {
-						console.log('intersection!');
 						const { target } = entry;
 						// run callback
 						const areaId = target.getAttribute('data-area-id');
 						const coordinates = JSON.parse(target.getAttribute('data-coords'));
 						const zoom = target.getAttribute('data-zoom');
-						// console.log({ areaId, coordinates, zoomLevel });
+
 						try {
-							intersectCallback({ areaId, coordinates, zoom });
+							intersectCallback({ coordinates, zoom });
 							// value.flyMapTo(areaId, coordinates, zoom);
 						} catch (e) {
 							console.error(e);
@@ -101,6 +100,43 @@
 	</LandmarkNeighborhood>
 
 	<LandmarkAnnotation
+		coords={[-118.29195141792297, 34.061779137567214]}
+		zoom={18}
+		areaId="ktown-annotation"
+	>
+		<span slot="title"> Homelessness encampments are often reported along roads. </span>
+		<p slot="body">
+			Many of the homeless encampment reportings follow the major roads such as Wilshire Blvd. There
+			appears to be a cluster of Airbnb listings in the southern and southeastern corners of K-town.
+		</p>
+	</LandmarkAnnotation>
+
+	<LandmarkNeighborhood
+		areaTitle="Hollywood: Home of the Stars"
+		areaId="hollywood"
+		coords={[-118.330135345459, 34.1016774615434]}
+		visUrl="/data/hollywood-airbnb.csv"
+		zoom={15}
+	>
+		<span slot="title">Hollywood: Home of the Stars</span>
+		<div slot="quote">
+			<blockquote>
+				“Hollywood is a place where they'll pay you a thousand dollars for a kiss and fifty cents
+				for your soul.”
+			</blockquote>
+			<cite>―Marilyn Monroe, Actress</cite>
+		</div>
+		<p slot="intro-p">
+			Hollywood made the city world-famous. In the early 1900s, filmmakers began moving to the Los
+			Angeles area to escape the rigorous rules imposed by Thomas Edison’s Motion Picture Patents
+			Company in New Jersey. The famous Hollywood sign was erected in 1923 as “Hollywoodland” to
+			advertise for a new housing development, and the “Hollywood Walk of Fame” was built soon after
+			in 1956. It currently has well over 2,000 names added to the star-studded sidewalk for
+			contributing to the entertainment industry (SMExpress, 2019).
+		</p>
+	</LandmarkNeighborhood>
+
+	<LandmarkAnnotation
 		areaId="hollywood-annotation"
 		coords={[-118.3399200439453, 34.10100227884199]}
 		zoom={16}
@@ -117,8 +153,8 @@
 	<LandmarkNeighborhood
 		areaTitle="Venice: A creative paradise"
 		areaId="venice"
-		visUrl="/data/venice-airbnb.csv"
 		coords={[-118.46677780151366, 33.99539435637889]}
+		visUrl="/data/venice-airbnb.csv"
 		zoom={15}
 	>
 		<div slot="quote">

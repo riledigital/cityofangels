@@ -1,22 +1,12 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import ScrollTrigger from './ScrollTrigger.svelte';
-
-	// import {
-	//   setupScrollObserver as scrollSetup
-	// } from './../ScrollEvents';
 	export let areaId: string;
 	export let coords: Array<Number>;
-	export let zoom: Number;
-
-	onMount(
-		async () => {}
-		// scrollSetup(areaId, zoomLevel);
-	);
+	export let zoom: number;
 </script>
 
 <section class="landmark-annotation">
-	<ScrollTrigger {areaId} {coords} zoomLevel={zoom ?? 12} />
+	<ScrollTrigger {areaId} {coords} zoom={zoom ?? 12} />
 	<h3 class="title">
 		<slot name="title" />
 	</h3>

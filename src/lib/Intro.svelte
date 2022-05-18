@@ -7,17 +7,13 @@
 
 	onMount(async () => {
 		const overviewScatterPlot = makeOverviewScatter('data/density_summary.csv');
-		embed('.overview-scatter-embed', overviewScatterPlot).then((result) => console.log(result));
+		embed('.overview-scatter-embed', overviewScatterPlot);
 	});
 </script>
 
 <div class="scrollstory" id="scrollstory">
 	<div class="title-card">
-		<ScrollTrigger
-			areaId="start"
-			coords={JSON.stringify([-118.22181701660156, 34.04298753935195])}
-			zoomLevel={4}
-		/>
+		<ScrollTrigger areaId="start" coords={[-118.22181701660156, 34.04298753935195]} zoom={12} />
 		<h1 class="title-card__title">Homelessness in the City of Angels</h1>
 		<p class="byline">
 			A data story by<br />

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import embed from 'vega-embed';
-	import { capitalize } from 'lodash';
+	import { capitalize } from 'lodash-es';
 	// import { setupScrollObserver } from './../ScrollEvents';
 	import { makePricePlot, makeMiniNights, makePlotRentalType } from './plotStyles';
 	import { onMount } from 'svelte';
@@ -31,7 +31,6 @@
 	onMount(async () => {
 		// Take attribute content and put it inside the info span
 		renderPlot(areaId, visUrl);
-		// setupScrollObserver(this, areaId, zoomLevel);
 	});
 </script>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let areaId: string;
 	export let coords: Array<Number>;
-	export let zoom: Number;
+	export let zoom: number;
 </script>
 
 <div

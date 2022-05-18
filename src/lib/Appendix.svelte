@@ -7,7 +7,7 @@
 		<article>
 			<details>
 				<summary>
-					<ScrollTrigger areaId="nyc" />
+					<ScrollTrigger areaId="nyc" coords={[-73.96046251058578, 40.80807627279606]} zoom={12} />
 					<h2 class="appendix-references">References</h2>
 				</summary>
 

@@ -1,16 +1,14 @@
 <script>
 	import { onMount } from 'svelte';
-
 	import 'ol/ol.css';
-	import Stamen from 'ol/source/Stamen';
-	import { Map, View } from 'ol';
-	import { fromLonLat } from 'ol/proj';
-	import GeoJSON from 'ol/format/GeoJSON';
 
-	import { Heatmap as HeatmapLayer, Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
-	import { OSM, Vector as VectorSource } from 'ol/source';
+	import { Map, View } from 'ol';
+	import { fromLonLat } from 'ol/proj.js';
+	import GeoJSON from 'ol/format/GeoJSON.js';
+	import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer.js';
+	import { Vector as VectorSource } from 'ol/source.js';
 	import { styleFunctionRentals, styleFunctionReports, styleFunctionBounds } from './MapStyles.js';
-	import XYZ from 'ol/source/XYZ';
+	import XYZ from 'ol/source/XYZ.js';
 
 	const COORDS = {
 		start: [-118.22181701660156, 34.04298753935195],
@@ -74,12 +72,6 @@
 
 	const LAYER_CARTO = new TileLayer({
 		source: SOURCE_CARTO
-	});
-
-	const LAYER_STAMEN = new TileLayer({
-		source: new Stamen({
-			layer: 'toner-lite'
-		})
 	});
 
 	const setupMap = function () {
